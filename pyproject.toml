@@ -1,0 +1,178 @@
+[tool.poetry]
+name = "ethbinductor"
+version = "0.0.1"
+description = "P4A Kivy/KivyMD Developer sample & tools."
+authors = ["BlackCatDevel0per <bcdev@mail.ru>"]
+license = "Apache 2.0"
+
+packages = [
+    { include = "ethbinductor", from = "src" },
+]
+
+[tool.poetry.urls]
+Homepage = "https://github.com/BlackCatDevel0per/ethbinductor"
+Documentation = "https://github.com/BlackCatDevel0per/ethbinductor"
+Repository = "https://github.com/BlackCatDevel0per/ethbinductor"
+
+# TODO: Execute without wait to end (poetry will closed while task is pending)
+# List commands with `poetry user-commands`
+[tool.poetry-plugin-commands]
+stree = "tree src"
+
+[tool.ruff]
+line-length = 100
+select = [
+	"RUF",
+	"FBT",
+	"FURB",
+	"PERF",
+	"TRY",
+	"FLY",
+	"YTT",
+	"PIE",
+	# "PYI",  # For stub files
+	"TCH",
+	"FA",
+	"UP",
+	"EM",
+	"PL",
+	"G",  # NOTE: CONF!
+	"INP",
+	"PT",
+	"DJ",
+	"NPY",
+	"PD",
+	"ERA",
+	"ARG",
+	"INT",
+	"TID",
+	"SIM",
+	"SLOT",
+	"RET",
+	"RSE",
+	"SLF",
+	"T20",
+	"Q",
+	"ISC",
+	"BLE",
+	"DTZ",
+	"COM",
+	"C4",
+	"A",
+	"PTH",
+	"FIX",
+	"TD",
+	"ANN",
+	"S",
+	"ASYNC",
+	"D",
+	"N",
+
+	"C",
+	"I",
+	# Pycodestyle
+	"E",
+	# Pyflakes
+	"F",
+	"B",
+	"W",
+	# isort
+	# "I001"
+]
+
+ignore = [
+	"W191", "D206", "RET502",
+	"UP037",  # Ignore quoted type annotations for properly work cython 0.29.37..
+	"UP040",  # New type aliases (type hinting)
+	"PTH123",  # Not good solution for all things..
+	"TD001",
+	"TD002",
+	"TD003",
+	"S101",
+]  # Add RET503?
+
+src = ["src/ethbinductor", "tests", "scripts"]
+
+exclude = [
+    ".git",
+    "build",
+    "dist",
+    "venv",
+    ".venv",
+    "docs",
+    "tests",
+    "dev",
+    "*.egg-info",
+]
+target-version = "py310"
+
+[tool.ruff.flake8-quotes]
+inline-quotes = "single"
+
+[tool.ruff.format]
+indent-style = "tab"
+
+
+[tool.poetry.dependencies]
+python = ">=3.8.1,<4.0"
+
+
+# Why? Why not?))
+#[tool.poetry-plugin-deps-juice]
+#"poetry" = [
+#	"base"
+#]
+
+
+[tool.poetry.group.base]
+optional = false
+
+[tool.poetry.group.base.dependencies]
+# ...
+astor = "^0.8.1"
+
+[tool.poetry.group.poetry-plugins]
+optional = true
+
+[tool.poetry.group.poetry-plugins.dependencies]
+poetry-plugin-commands = "^0.0.9"
+poetry-plugin-deps-juice = "^0.0.3"
+
+# TODO: Cut to sub-groups..
+[tool.poetry.group.dev]
+optional = false
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.2"
+pytest-dependency = "^0.5.1"
+ruff = "^0.0.292"
+# TODO: Nuitka..?
+build = "^1.0.3"
+setuptools = "^69.0.3"
+wheel = "^0.42.0"
+#regex = "^2023.12.25"
+#cachetools = "^5.3.2"
+pyperclip = "^1.8.2"
+ipykernel = "^6.29.4"
+ipython = "8.12.3"
+jedi = "0.19.1"
+poetry-plugin-commands = "^0.0.9"
+##mypy = {extras = ["mypyc"], version = "^1.9.0"}
+
+[tool.poetry.group.performance]
+optional = true
+
+[tool.poetry.group.performance.dependencies]
+ujson = "^5.9.0"
+
+[tool.poetry.group.other.dependencies]
+rich = "^13.7.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.cython]
+force = true
+
