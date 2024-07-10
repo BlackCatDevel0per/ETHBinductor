@@ -75,6 +75,7 @@ def create_def_node(func: dict[str, Any]) -> ast.FunctionDef:
 			),
 			attr='call',
 			# TODO: Transaction generate by some info.. (`.build_transaction` method)
+			# (look at "payable" & "constant" in json)
 		),
 
 		# empty call, aka: `.call()`
