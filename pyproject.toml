@@ -89,6 +89,7 @@ ignore = [
 	"TD002",
 	"TD003",
 	"S101",
+	"ERA001",##
 ]  # Add RET503?
 
 src = ["src/ethbinductor", "tests", "scripts"]
@@ -130,6 +131,8 @@ optional = false
 [tool.poetry.group.base.dependencies]
 # ...
 astor = "^0.8.1"
+web3 = "^6.20.0"
+click = "^8.1.7"
 
 [tool.poetry.group.poetry-plugins]
 optional = true
