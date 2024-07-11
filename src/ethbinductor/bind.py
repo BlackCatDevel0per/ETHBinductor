@@ -27,11 +27,72 @@ def _fargs_parse(fargs: list[dict[str, str]]) -> list[tuple[str, str]]:
 	return args
 
 
+# TODO: Monitoring events generation..
+
+
+def _create_call(
+	name: str, sm: str,
+	args: list[tuple[str, str]], ccargs: list[ast.Name],
+) -> ast.Call:
+	# obj `self.contract.functions.<func_name>`
+	func_obj = ast.Attribute(
+		# `self.contract`
+		value=ast.Attribute(
+			value=ast.Name(
+				id='self',
+			),
+			attr='contract',
+		),
+		attr='functions.' + name,
+	)
+	# init call `self.contract.functions.<func_name>(<args>)`
+	contract_func_init = ast.Call(
+		# `self.contract.functions.<func_name>`
+		func=func_obj,
+		args=ccargs,
+		keywords=[],  # TODO: ...
+	)
+
+	# `self.contract.functions.<func_name>.call()` - read func
+	if sm in ('view', 'pure'):
+		# call `self.contract.functions.<func_name>(<args>).call()`
+		val = ast.Call(
+			func=ast.Attribute(
+				# init call `self.contract.functions.<func_name>(<args>)`
+				value=contract_func_init,
+				attr='call',
+				# TODO: Transaction generate by some info.. (`.build_transaction` method)
+				# (look at "payable" & "constant" in json)
+			),
+
+			# empty call, aka: `.call()`
+			args=[],
+			keywords=[],
+		)
+		return val
+
+	# `self.contract.functions.<func_name>.transact(transact_params)` - write func
+	val = ast.Call(
+		func=ast.Attribute(
+			value=contract_func_init,
+			attr='transact',
+		),
+		args=[ast.Name(id='transact_params')],
+		keywords=[],
+	)
+	args.append(('transact_params', 'dict[str, Any]'))
+
+	# TODO: Update `args` listwith new calls..
+
+	return val
+
+
 def create_def_node(func: dict[str, Any]) -> ast.FunctionDef:
-	func_name = func['name']
+	func_name: str = func['name']
+	func_sm: str = func['stateMutability']
 	inputs = func['inputs']
 	outputs = func['outputs']
-	# state_mutability = func['stateMutability']
+	del func
 
 	# # Args
 	# Parse args
@@ -39,8 +100,17 @@ def create_def_node(func: dict[str, Any]) -> ast.FunctionDef:
 
 	# TODO: Option to replace/format arg name
 
+	# # Contract func call
+	# TODO: Use tuple..?
+	call_args = [ast.Name(id=aname) for aname, _ in args]
+	# TODO: Find ways to detect "read" & write funcs..
+	# `self.contract.functions.<func_name>.call()` - read func..
+	# FIXME: Remove `args` arg..
+	val = _create_call(func_name, func_sm, args, call_args)
+
 	# Make def node
 	args_node = ast.arguments(
+		# TODO: Optional `self` annotation.. (mb using linters)
 		args=['self'] + [
 			ast.arg(
 				arg=aname,  # FIXME: Flag if noname arg..
@@ -51,51 +121,8 @@ def create_def_node(func: dict[str, Any]) -> ast.FunctionDef:
 		# kwonlyargs=[],
 		# kw_defaults=[],
 	)
-
-	# # Contract func call
-	call_args = [ast.Name(id=aname) for aname, _ in args]
-	# TODO: Find ways to detect "read" & write funcs..
-	# `self.contract.functions.<func_name>.call()` - read func..
-	val = ast.Call(
-		func=ast.Attribute(
-			value=ast.Call(
-				# self.contract.functions.<func_name>
-				func=ast.Attribute(
-					# self.contract
-					value=ast.Attribute(
-						value=ast.Name(
-							id='self',
-						),
-						attr='contract',
-					),
-					attr='functions.' + func_name,
-				),
-				args=call_args,
-				keywords=[],
-			),
-			attr='call',
-			# TODO: Transaction generate by some info.. (`.build_transaction` method)
-			# (look at "payable" & "constant" in json)
-		),
-
-		# empty call, aka: `.call()`
-		args=[],
-		keywords=[],
-	)
-
-	# # FIXME: Move it to the other place!
-	# # Transact (if need)
-	# if call_args:
-	# 	val = ast.Call(
-	# 		func=ast.Attribute(value=contract_func_call, attr='transact'),
-	# 		args=[ast.Dict(
-	# 			keys=[ast.Str(s='from'), ast.Str(s='gas')],
-	# 			values=[ast.Name(id='from_address'), ast.Name(id='gas')]
-	# 		)],
-	# 		keywords=[],
-	# 	)
-	# else:
-	# 	val = contract_func_call
+	# TODO: Make "helper" args..
+	del args
 
 	return_node = ast.Return(value=val)
 

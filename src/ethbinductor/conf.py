@@ -17,6 +17,11 @@ _TYPES_ABI2PY: dict[str, str] = {
 	'bool': 'bool',
 	'string': 'str',
 	'bytes': 'str',##int|str??
+
+	# TODO: Split this part to the new one..
+	# or make managed sequence..
+	# internal (Python only)
+	'dict[str, Any]': 'dict[str, Any]',
 }
 
 
