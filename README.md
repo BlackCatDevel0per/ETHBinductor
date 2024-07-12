@@ -46,6 +46,11 @@ ethbinductor abi2py --cls-name ERC20 --abi-provider file examples/abi/erc20.json
 ```
 
 ```bash
+# Same, but save translated code to file
+ethbinductor abi2py --cls-name ERC20 --abi-provider file examples/abi/erc20.json --output file examples/eth_erc20_bind.py
+```
+
+```bash
 # Contract (ERC20) load using etherscan & translate it to native Python binding (default output to console)
 ethbinductor abi2py --cls-name ERC20 --abi-provider etherscan 0xc3761eb917cd790b30dad99f6cc5b4ff93c4f9ea
 ```

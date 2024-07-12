@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ethbinductor"
-version = "0.0.5"
+version = "0.0.6"
 description = "P4A Kivy/KivyMD Developer sample & tools."
 authors = ["BlackCatDevel0per <bcdev@mail.ru>"]
 license = "Apache 2.0"
@@ -164,7 +164,7 @@ optional = false
 astor = "^0.8.1"
 click = "^8.1.7"
 requests = "^2.32.3"
-# FIXME: Add ethbind
+ethbind = "^0.0.1"
 
 [tool.poetry.group.poetry-plugins]
 optional = true
@@ -197,15 +197,11 @@ jedi = "0.19.1"
 ##mypy = {extras = ["mypyc"], version = "^1.9.0"}
 
 
-
-
 [tool.poetry.group.performance]
 optional = true
 
 [tool.poetry.group.performance.dependencies]
 ujson = "^5.9.0"
-
-
 
 
 [tool.poetry.group.other.dependencies]

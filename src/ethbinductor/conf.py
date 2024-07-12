@@ -70,7 +70,8 @@ for _node in _ethbbf_tree.body:
 		ast.alias(name=first_varn, asname=None),
 	)
 
-TYPES_ABI2PY.update(zip(_TYPES_ABI2PY_ALTS, _TYPES_ABI2PY_ALTS, strict=True))
+# FIXME: `strict=True`..
+TYPES_ABI2PY.update(zip(_TYPES_ABI2PY_ALTS, _TYPES_ABI2PY_ALTS))
 
 ##
 # print(vars(abi_sample_module_tree.body[3].body[1]))
