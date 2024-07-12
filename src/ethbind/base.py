@@ -15,10 +15,10 @@ class ETHABIBindBase:
 		contract_addr: ChecksumAddress,
 		abi: dict,
 	) -> None:
-		self.web3: 'Web3' = web3
-		self.contract: 'Contract' = self.web3.eth.contract(
+		self.web3: Web3 = web3
+		self.contract: Contract = self.web3.eth.contract(
 			self.web3.to_checksum_address(contract_addr), abi=abi,  #
 		)
 
-		self.functions: 'ContractFunctions' = self.contract.functions
-		self.events: 'ContractEvents' = self.contract.events
+		self.functions: ContractFunctions = self.contract.functions
+		self.events: ContractEvents = self.contract.events
