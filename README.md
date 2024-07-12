@@ -61,8 +61,7 @@ ethbinductor abi2py --cls-name ERC20 --abi-provider etherscan 0xc3761eb917cd790b
 ethbinductor abi2py --cls-name ERC20 --abi-provider etherscan 0xc3761eb917cd790b30dad99f6cc5b4ff93c4f9ea --output file examples/eth_erc20_bind.py
 ```
 
-Bind example of ERC20 you can see [here](examples/eth_erc20_bind.py) with usage [example](examples/erc20_test.py)
-But, first install base lib:
+Bind example of ERC20 you can see [here](examples/eth_erc20_bind.py) with usage [example](examples/erc20_test.py) but, first install base lib:
 ```bash
 pip install ethbind
 ```
