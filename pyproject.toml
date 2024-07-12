@@ -1,12 +1,40 @@
 [tool.poetry]
 name = "ethbinductor"
-version = "0.0.1"
+version = "0.0.5"
 description = "P4A Kivy/KivyMD Developer sample & tools."
 authors = ["BlackCatDevel0per <bcdev@mail.ru>"]
 license = "Apache 2.0"
 
 packages = [
     { include = "ethbinductor", from = "src" },
+	{ include = "__main__.py", from = "src/ethbinductor" },
+]
+
+keywords = [
+	"etherium",
+	"eth",
+	"code-gen",
+	"bind",
+	"translation",
+	"dev",
+	"ipfs",
+	"docs",
+	"tester",
+]
+
+classifiers = [  # TODO: Add game..
+    "License :: OSI Approved :: Apache Software License",
+    # "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Typing :: Typed",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 
 [tool.poetry.urls]
@@ -114,6 +142,10 @@ inline-quotes = "single"
 indent-style = "tab"
 
 
+
+[tool.poetry.scripts]
+ethbinductor = "ethbinductor.cli:cli"
+
 [tool.poetry.dependencies]
 python = ">=3.8.1,<4.0"
 
@@ -130,9 +162,9 @@ optional = false
 
 [tool.poetry.group.base.dependencies]
 astor = "^0.8.1"
-web3 = "^6.20.0"
 click = "^8.1.7"
 requests = "^2.32.3"
+# FIXME: Add ethbind
 
 [tool.poetry.group.poetry-plugins]
 optional = true

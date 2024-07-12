@@ -58,8 +58,10 @@ def proc(
 	# TODO: Add abi & output provider `custom` to load user's providers..
 	# TODO: Annotate..
 	try:
-		get_json = __import__(f'providers.abi.{abi_provider}', fromlist=('ethbinductor')).get_json
-		put = __import__(f'providers.output.{output}', fromlist=('ethbinductor')).put
+		get_json = __import__(
+			f'ethbinductor.providers.abi.{abi_provider}', fromlist=('ethbinductor'),
+		).get_json
+		put = __import__(f'ethbinductor.providers.output.{output}', fromlist=('ethbinductor')).put
 	except ModuleNotFoundError as err:
 		msg = f"""Provider not found: 'ethbinductor.{err.args[0].split("'")[1]}'"""
 		raise ProviderNotFoundError(msg) from err
