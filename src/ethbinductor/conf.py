@@ -13,6 +13,9 @@ if TYPE_CHECKING:
 	from typing import Final
 
 
+_TEST_ETH_ADDR: str = '0xeD70EF0f4c9245199dE59989BB78D7b9Cf82932a'
+_TEST_ETH_ERC20_ADDR: str = '0xc3761eb917cd790b30dad99f6cc5b4ff93c4f9ea'
+
 _TYPES_ABI2PY: dict[str, str] = {
 	'bool': 'bool',
 	'string': 'str',

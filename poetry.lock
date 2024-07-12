@@ -2195,6 +2195,20 @@ poetry = ">=1.8.0,<3.0.0"
 poetry-core = ">=1.7.0,<3.0.0"
 
 [[package]]
+name = "poetry-version-plugin"
+version = "0.2.0"
+description = "Poetry plugin for dynamically extracting the package version from a __version__ variable or a Git tag."
+optional = false
+python-versions = ">=3.7,<4.0"
+files = [
+    {file = "poetry_version_plugin-0.2.0-py3-none-any.whl", hash = "sha256:8ff1a61caa32e73bbc384ec72de2606033c1971ce8c55eb2d17d204935897d9d"},
+    {file = "poetry_version_plugin-0.2.0.tar.gz", hash = "sha256:d972e32d72dab0dc306f940c0e38cd817aa6218b3931ab38666f922753560fdb"},
+]
+
+[package.dependencies]
+poetry = ">=1.2.0,<2.0.0"
+
+[[package]]
 name = "prompt-toolkit"
 version = "3.0.47"
 description = "Library for building powerful interactive command lines in Python"
@@ -3063,13 +3077,13 @@ files = [
 
 [[package]]
 name = "tomlkit"
-version = "0.12.5"
+version = "0.13.0"
 description = "Style preserving TOML library"
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.8"
 files = [
-    {file = "tomlkit-0.12.5-py3-none-any.whl", hash = "sha256:af914f5a9c59ed9d0762c7b64d3b5d5df007448eb9cd2edc8a46b1eafead172f"},
-    {file = "tomlkit-0.12.5.tar.gz", hash = "sha256:eef34fba39834d4d6b73c9ba7f3e4d1c417a4e56f89a7e96e090dd0d24b8fb3c"},
+    {file = "tomlkit-0.13.0-py3-none-any.whl", hash = "sha256:7075d3042d03b80f603482d69bf0c8f345c2b30e41699fd8883227f89972b264"},
+    {file = "tomlkit-0.13.0.tar.gz", hash = "sha256:08ad192699734149f5b97b45f1f18dad7eb1b6d16bc72ad0c2335772650d7b72"},
 ]
 
 [[package]]
@@ -3598,4 +3612,4 @@ test = ["big-O", "importlib-resources", "jaraco.functools", "jaraco.itertools", 
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<4.0"
-content-hash = "7915ccd690cbdc11bf6fc10c95ef5adbfceba8dd65044a2adeba4a76281e4a90"
+content-hash = "bfb0a5dcd1852c72ff6f425cf6815a2170256634a2d657699329c8c824f916d1"

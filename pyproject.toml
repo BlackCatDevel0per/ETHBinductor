@@ -119,20 +119,20 @@ python = ">=3.8.1,<4.0"
 
 
 # Why? Why not?))
-#[tool.poetry-plugin-deps-juice]
-#"poetry" = [
-#	"base"
-#]
+[tool.poetry-plugin-deps-juice]
+"poetry" = [
+	"base"
+]
 
 
 [tool.poetry.group.base]
 optional = false
 
 [tool.poetry.group.base.dependencies]
-# ...
 astor = "^0.8.1"
 web3 = "^6.20.0"
 click = "^8.1.7"
+requests = "^2.32.3"
 
 [tool.poetry.group.poetry-plugins]
 optional = true
@@ -141,7 +141,10 @@ optional = true
 poetry-plugin-commands = "^0.0.9"
 poetry-plugin-deps-juice = "^0.0.3"
 
-# TODO: Cut to sub-groups..
+
+# TODO: Implement `poetry-plugin-auto-versioning`
+
+
 [tool.poetry.group.dev]
 optional = false
 
@@ -159,14 +162,19 @@ pyperclip = "^1.8.2"
 ipykernel = "^6.29.4"
 ipython = "8.12.3"
 jedi = "0.19.1"
-poetry-plugin-commands = "^0.0.9"
 ##mypy = {extras = ["mypyc"], version = "^1.9.0"}
+
+
+
 
 [tool.poetry.group.performance]
 optional = true
 
 [tool.poetry.group.performance.dependencies]
 ujson = "^5.9.0"
+
+
+
 
 [tool.poetry.group.other.dependencies]
 rich = "^13.7.0"

@@ -6,7 +6,7 @@ if TYPE_CHECKING:
     from ethbind.types import bytes32, uint8, uint16, uint64, uint256, address
 
 
-class erc20(ETHABIBindBase):
+class ERC20(ETHABIBindBase):
 
     def name(self) -> str:
         return self.contract.functions.name().call()

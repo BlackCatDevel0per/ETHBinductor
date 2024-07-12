@@ -1,1 +1,1 @@
-# TODO: `__version__`?
+__version__ = "alpha"
