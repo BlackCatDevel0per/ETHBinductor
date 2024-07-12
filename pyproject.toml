@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ethbinductor"
-version = "0.0.6"
+version = "0.0.7"
 description = "P4A Kivy/KivyMD Developer sample & tools."
 authors = ["BlackCatDevel0per <bcdev@mail.ru>"]
 license = "Apache 2.0"
