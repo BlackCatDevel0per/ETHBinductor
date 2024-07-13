@@ -7,7 +7,7 @@ license = "Apache 2.0"
 readme = "README.md"
 
 packages = [
-    { include = "ethbinductor", from = "src" },
+	{ include = "ethbinductor", from = "src" },
 	{ include = "__main__.py", from = "src/ethbinductor" },
 ]
 
@@ -212,7 +212,4 @@ rich = "^13.7.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-
-[tool.cython]
-force = true
 
