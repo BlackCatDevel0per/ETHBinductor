@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "ethbinductor"
 version = "0.0.9"
-description = "P4A Kivy/KivyMD Developer sample & tools."
+description = "Etherium-based bind-code generator from json abi."
 authors = ["BlackCatDevel0per <bcdev@mail.ru>"]
 license = "Apache 2.0"
 readme = "README.md"
